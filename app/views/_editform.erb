@@ -1,0 +1,11 @@
+<form id="edit_topic" method="post" action="/<%= topic.title %>/edit">
+  <input type="hidden" name="_method" value="PUT">
+   <input type="hidden" name="topic[author_id]" value="<%= session[:user_id] %>">
+  <input type="hidden" name="topic[forum_id]" value="<%= topic.forum.id %>">
+   <label class="label" for="title">Title</label><br>
+   <input type="text" name="topic[title]" value="<%= topic.title %>"><br>
+   <label class="label" for="content">Content</label><br>
+   <textarea type="text" name="topic[content]"><%= topic.content %></textarea>
+   <br>
+   <input class="btn-submit" type="submit" value="Edit">
+</form>

@@ -1,0 +1,24 @@
+<div class="profile">
+	<img src="/imgs/photo.jpg">
+	<h1><%= @user.username %></h1>
+<!-- 	<p><%= @user.bio %></p>
+	<form id="edit_bio" method="post" action="/<%=@user.id%>/updatebio">
+	<input type="hidden" name="_method" value="PUT">
+    <label class="label" for="content">Edit bio:</label><br>
+    <textarea type="text" name="user[bio]"></textarea>
+    <br>
+    <input class="btn-submit" type="submit" value="Save"> -->
+	<h4><%= @user.username %>'s topics:</h4>
+	<ul>
+		<% @user.topics.each do |topic| %>
+		<li><a href='/<%= topic.title %>'><%= topic.title %></a></li>
+		<% end %>
+	</ul>
+
+	<h4><%= @user.username %>'s favorite topics:</h4>
+	<ul>
+		<% @user.fav_topics.each do |fav_topic| %>
+		<li><a href='/<%= fav_topic.title %>'><%= fav_topic.title %></a></li>
+		<% end %>
+	</ul>
+</div>

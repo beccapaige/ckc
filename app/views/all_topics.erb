@@ -1,0 +1,19 @@
+<small>>> <a href="/forums">forums</a></small>
+<h1><%= @forum.title %></h1>
+<h3><%= @forum.description %></h3>
+	<ul>
+		<% @forum.topics.each do |topic| %>
+		<li><a href='/<%= topic.title %>'><%= topic.title %></a></li>
+		<% end %>
+	</ul>
+
+  <center><form id="new_topic" method="post" action="/forums/<%= @forum.title %>">
+  	<input type="hidden" name="topic[author_id]" value="<%= session[:user_id] %>">
+  	<input type="hidden" name="topic[forum_id]" value="<%= @forum.id %>">
+    <label class="label" for="title">Title:</label><br>
+    <input type="text" name="topic[title]"><br>
+    <label class="label" for="content">Content:</label><br>
+    <textarea type="text" name="topic[content]"></textarea>
+    <br>
+    <input class="btn-submit" type="submit" value="Post Topic">
+  </form></center>

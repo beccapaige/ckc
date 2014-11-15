@@ -1,0 +1,7 @@
+  <form class= "reply_box" id="new_reply" method="post" action="/<%=@topic.title%>/reply">
+  	<input type="hidden" name="reply[author_id]" value="<%= session[:user_id] %>">
+  	<input type="hidden" name="reply[topic_id]" value="<%= @topic.id %>">
+    <textarea type="text" name="reply[content]" placeholder="Reply to topic"></textarea>
+    <br>
+    <input class="btn-submit" type="submit" value="Submit">
+  </form>

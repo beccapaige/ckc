@@ -1,0 +1,12 @@
+<div class="index_container">
+	<h1>Courteney's Kitten Corner!</h1>
+<img src='/imgs/court.png'><br>
+
+	<% if current_user %>
+		<a href='/logout'>Log Out</a>
+	<% else %>
+		<a class="login_link" href='/login'>Log In</a> | <a class="signup_link" href='/signup'>Sign Up</a>
+		<%= erb :log_in %>
+		<%= erb :sign_up %>
+	<% end %>
+</div>

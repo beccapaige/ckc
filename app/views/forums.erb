@@ -1,0 +1,6 @@
+<h1>Forums</h1>
+<div id="forum_box">
+	<% @forums.each do |forum| %>
+		<b><a href='/forums/<%= forum.title %>'><%= forum.title %></a></b> |
+	<% end %>
+</div>

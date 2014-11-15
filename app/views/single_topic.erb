@@ -1,0 +1,36 @@
+<small><a href="/forums">forums</a> >> <a href="/forums/<%=@topic.forum.title%>"><%=@topic.forum.title%></a></small>
+<h1><%= @topic.title %></h1>
+<h5>Created by: <a href='/profile/<%=@topic.author.id%>'><%= @topic.author.username %></a> on <%= @topic.created_at.to_s[0..-5] %></h5>
+<div id="topic_content"><%= @topic.content %></div>
+<br> 
+  <% if current_user %>
+  <form action="/<%= @topic.title %>/favorite" method="POST">
+  	<input type="hidden" name="favorite[user_id]" value="<%= session[:user_id] %>">
+  	<input type="hidden" name="favorite[topic_id]" value="<%= @topic.id %>">
+    <input type="submit" class="btn-submit" value="Favorite">
+  </form>
+  <% if current_user.owns(@topic) %>
+  <form action="/<%= @topic.title %>/edit">
+    <input type="submit" class="btn-submit" value="Edit">
+  </form>
+    <form action="/<%= @topic.title %>/delete" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input class="btn-submit" type="submit" value="delete">
+    </form>
+    <% end %>
+<br>
+    <form class="reply_link"action="/<%= @topic.title %>/reply">
+      <input class="btn-submit" type="submit" value="Reply">
+    </form>
+  <br>
+  <div id="reply_form">
+    <%= erb :_replyform %>
+  </div>
+  <% end %>
+  <h3>Replies:</h3>
+<div id="reply_container">
+  <% @topic.replies.each do |reply| %>
+  <a href='/profile/<%=reply.author.id%>'><%= reply.author.username %></a> replied: <br> 
+  <p class="reply"><%= reply.content %></p>
+  <% end %>
+</div>

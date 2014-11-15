@@ -1,0 +1,16 @@
+<div class="signup">
+<%= display_error %>
+  <h1>Sign Up</h1>
+
+  <form id="sign-up" method="post" action="/signup">
+    <input type="text" name="user[username]" placeholder="Username">
+    <br>
+    <input type="password" name="user[password]" placeholder="Password">
+    <br>
+    <input type="password" name="user[password_confirmation]" placeholder="Confirm Password">
+    <br>
+    <br>
+    <input class="btn-submit" type="submit" value="Sign Up">
+  </form>
+
+</div>
